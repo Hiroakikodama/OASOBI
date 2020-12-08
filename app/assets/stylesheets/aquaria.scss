@@ -1,3 +1,22 @@
 // Place all the styles related to the Aquaria controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sample {
+  display: block;
+  margin: 5px auto;
+  width: 300px;
+  height: auto;
+}
+
+.item {
+  background-color: lightcyan;
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.item_title {
+  text-align: center;
+  padding-top: 5px;
+}
