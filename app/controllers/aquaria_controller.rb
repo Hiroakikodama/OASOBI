@@ -5,16 +5,16 @@ class AquariaController < ApplicationController
   end
 
   def new
-    @aquarium = Aquarium.new
+    @aquarium = Aquarium.new(flash[:aquarium])
   end
 
   def create
     @aquarium = Aquarium.new(aquarium_params)
     if @aquarium.save
-      flash[:notice] = '水族館の新規作成に成功'
+      flash[:notice] = "「#{aquarium.name}」の新規作成に成功"
       redirect_to aquarium
     else
-      redirect_to new_aquarium_path, flash: {
+      redirect_to new_aquaria_path, flash: {
         aquarium: aquarium,
         error_messages: aquarium.errors.full_messages
       }
@@ -35,7 +35,7 @@ class AquariaController < ApplicationController
 
   private
   def aquarium_params
-    params.require(:aquarium).permit(:name, :body, :address, :official)
+    params.require(:aquarium).permit(:name, :body, :address, :official, :image)
   end
 
   def set_target_aquarium

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_07_160022) do
+ActiveRecord::Schema.define(version: 2020_12_09_162736) do
 
   create_table "aquaria", force: :cascade do |t|
     t.string "name", null: false
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2020_12_07_160022) do
     t.text "official"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_id"
     t.index ["name"], name: "index_aquaria_on_name"
   end
 
