@@ -1,36 +1,40 @@
 class AquariaController < ApplicationController
   before_action :set_target_aquarium, only: %i[show edit update destroy]
+
   def index
-    @aquaria = Aquarium.all
+    @aquaria = Aquarium.page(params[:page])
   end
 
   def new
-    @aquarium = Aquarium.new(flash[:aquarium])
+    @aquarium = Aquarium.new
   end
 
   def create
-    @aquarium = Aquarium.new(aquarium_params)
-    if @aquarium.save
-      flash[:notice] = "「#{aquarium.name}」の新規作成に成功"
+    aquarium = Aquarium.new(aquarium_params)
+    if aquarium.save
+      flash[:notice] = "「#{aquarium.name}」を作成しました。"
       redirect_to aquarium
     else
-      redirect_to new_aquaria_path, flash: {
-        aquarium: aquarium,
+      redirect_to new_aquarium_path, flash: {
         error_messages: aquarium.errors.full_messages
       }
     end
+  end
+
+  def show
   end
 
   def edit
   end
 
   def update
-  end
-
-  def show
+    @aquarium.update(aquarium_params)
+    redirect_to @aquarium
   end
 
   def destroy
+    @aquarium.delete
+    redirect_to aquaria_path, flash: { notice: "「#{@aquarium.name}」を削除しました。" }
   end
 
   private

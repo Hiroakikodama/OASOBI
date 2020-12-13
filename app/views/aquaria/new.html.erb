@@ -1,7 +1,8 @@
-<div class="row align-item-center">
-  <h1>水族館の新規登録</h1>
-  <div class="ml-auto aquaria__linkBox">
-    <% link_to '一覧', aquaria_path, class: 'btn btn-outline-dark' %>
+<div class="d-flex align-items-center">
+  <h1>新規水族館登録</h1>
+  <div class="ml-auto boards__linkBox">
+    <%= link_to '水族館一覧', aquaria_path, class:'btn btn-outline-dark' %>
   </div>
 </div>
+
 <%= render partial: 'form', locals: { aquarium: @aquarium } %>

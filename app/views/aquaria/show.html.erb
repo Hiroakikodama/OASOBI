@@ -1,2 +1,12 @@
-<h1>Aquaria#show</h1>
-<p>Find me in app/views/aquaria/show.html.erb</p>
+<div class="d-flex align-items-center mt-4 mb-4">
+  <div class="ml-auto boards__linkBox">
+    <%= link_to '水族館一覧', aquaria_path, class: 'btn btn-outline-dark' %>
+    <%= link_to '編集', edit_aquarium_path(@aquarium), class:'btn btn-outline-dark' %>
+  </div>
+</div>
+
+<% if flash[:notice] %>
+<div class="alert alert-primary"><%= flash[:notice] %></div>
+<% end %>
+
+<%= render partial: 'aquarium', object: @aquarium %>

@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-header">
+    <h4><%= aquarium.name %></h4>
+  </div>
+  <div class="card-body">
+    <%= attachment_image_tag aquarium, :image %>
+    <p class="card-text"><%= simple_format(aquarium.body) %></p>
+    <p><%= aquarium.address %></p>
+    <p><%= aquarium.official %></p>
+  </div>
+</div>
