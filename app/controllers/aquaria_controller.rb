@@ -22,6 +22,7 @@ class AquariaController < ApplicationController
   end
 
   def show
+    @comment = @aquarium.comments.new
   end
 
   def edit

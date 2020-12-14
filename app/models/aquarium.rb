@@ -16,6 +16,7 @@
 #  index_aquaria_on_name  (name)
 #
 class Aquarium < ApplicationRecord
+  has_many :comments
   attachment :image
   validates :name, presence: true
   validates :body, presence: true, length: { maximum: 500, minimum: 30 }
