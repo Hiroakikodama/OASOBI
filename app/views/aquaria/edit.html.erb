@@ -1,0 +1,8 @@
+<div class="d-flex align-items-center">
+  <h1>内容編集</h1>
+  <div class="ml-auto boards__linkBox">
+    <%= link_to '水族館一覧', aquaria_path, class: 'btn btn-outline-dark' %>
+  </div>
+</div>
+
+<%= render partial: 'form', locals: { aquarium: @aquarium } %>
