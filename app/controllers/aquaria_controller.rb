@@ -22,15 +22,22 @@ class AquariaController < ApplicationController
   end
 
   def show
-    @comment = @aquarium.comments.new
+    @comment = Comment.new(aquarium_id: @aquarium.id)
   end
 
   def edit
+    @aquarium.attributes = flash[:aquarium] if flash[:aquarium]
   end
 
   def update
-    @aquarium.update(aquarium_params)
-    redirect_to @aquarium
+    if @aquarium.update(aquarium_params)
+      redirect_to @aquarium
+    else
+      redirect_to :back, flash: {
+        aquarium: @aquarium,
+        error_messages: @aquarium.errors.full_messages
+      }
+    end
   end
 
   def destroy
