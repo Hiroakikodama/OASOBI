@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_14_154958) do
+ActiveRecord::Schema.define(version: 2020_12_16_102249) do
 
   create_table "aquaria", force: :cascade do |t|
     t.string "name", null: false
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 2020_12_14_154958) do
     t.index ["name"], name: "index_aquaria_on_name"
   end
 
+  create_table "aquarium_tag_relations", force: :cascade do |t|
+    t.integer "aquarium_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["aquarium_id"], name: "index_aquarium_tag_relations_on_aquarium_id"
+    t.index ["tag_id"], name: "index_aquarium_tag_relations_on_tag_id"
+  end
+
   create_table "comments", force: :cascade do |t|
     t.integer "aquarium_id"
     t.string "name", null: false
@@ -30,6 +39,12 @@ ActiveRecord::Schema.define(version: 2020_12_14_154958) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["aquarium_id"], name: "index_comments_on_aquarium_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
