@@ -2,7 +2,8 @@ class AquariaController < ApplicationController
   before_action :set_target_aquarium, only: %i[show edit update destroy]
 
   def index
-    @aquaria = Aquarium.page(params[:page])
+    @aquaria = params[:tag_id].present? ? Tag.find(params[:tag_id]).aquaria : Aquarium.all
+    @aquaria = @aquaria.page(params[:page])
   end
 
   def new
@@ -41,13 +42,13 @@ class AquariaController < ApplicationController
   end
 
   def destroy
-    @aquarium.delete
+    @aquarium.destroy
     redirect_to aquaria_path, flash: { notice: "「#{@aquarium.name}」を削除しました。" }
   end
 
   private
   def aquarium_params
-    params.require(:aquarium).permit(:name, :body, :address, :official, :image)
+    params.require(:aquarium).permit(:name, :body, :address, :official, :image, tag_ids: [])
   end
 
   def set_target_aquarium
