@@ -1,6 +1,10 @@
 ja:
   activerecord:
     attributes:
+      user:
+        name: ユーザー名
+        password: パスワード
+        password_confirmation: パスワード（確認）
       aquarium:
         name: 水族館名
         body: 水族館の説明

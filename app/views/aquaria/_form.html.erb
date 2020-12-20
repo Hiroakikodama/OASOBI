@@ -1,6 +1,6 @@
 <%= render 'shared/error_messages' %>
 
-<%= form_for aquarium do |f| %>
+<%= form_with model: aquarium do |f| %>
 <div class="form-group">
   <%= f.label :name, '水族館の名前' %>
   <%= f.text_field :name, class: 'form-control' %>

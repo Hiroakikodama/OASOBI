@@ -1,7 +1,7 @@
 <div class="d-flex align-items-center">
   <h1>水族館一覧</h1>
   <div class="ml-auto aquaria__linkBox">
-    <%= form_tag aquaria_path, method: :get, class: 'aquaria__searchForm' do %>
+    <%= form_with url: aquaria_path, method: :get, class: 'aquaria__searchForm' do %>
     <%= select_tag :tag_id,
                      options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
                      {
